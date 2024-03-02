@@ -1,4 +1,5 @@
 import Container from "@/components/shared/Container";
+import TipTapEditor from "@/components/shared/TipTapEditor";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader } from "@/components/ui/card";
 import { clerk } from "@/lib/clerk-server";
@@ -71,7 +72,9 @@ export default async function NotesPage(props: Props) {
           </CardHeader>
         </Card>
         <div className="mt-4">
-          <Card>Note Editor</Card>
+          <Card className="px-12 py-8">
+            <TipTapEditor />
+          </Card>
         </div>
       </Container>
     </div>

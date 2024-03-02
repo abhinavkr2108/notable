@@ -48,3 +48,12 @@
     --ring: 263.4 70% 50.4%;
   }
 }
+
+.tiptap.ProseMirror {
+  outline: none;
+}
+
+.is-active {
+  background-color: #dadada;
+  border-radius: 0.5rem;
+}

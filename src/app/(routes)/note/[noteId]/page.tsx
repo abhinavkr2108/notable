@@ -73,7 +73,7 @@ export default async function NotesPage(props: Props) {
         </Card>
         <div className="mt-4">
           <Card className="px-12 py-8">
-            <TipTapEditor />
+            <TipTapEditor note={note} />
           </Card>
         </div>
       </Container>

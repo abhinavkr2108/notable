@@ -1,7 +1,8 @@
 import Container from "@/components/shared/Container";
+import DeleteNoteBtn from "@/components/shared/DeleteNoteBtn";
 import TipTapEditor from "@/components/shared/TipTapEditor";
 import { Button } from "@/components/ui/button";
-import { Card, CardHeader } from "@/components/ui/card";
+import { Card, CardFooter, CardHeader } from "@/components/ui/card";
 import { clerk } from "@/lib/clerk-server";
 import { db } from "@/lib/database";
 import { $notes } from "@/lib/database/schema";
@@ -61,19 +62,23 @@ export default async function NotesPage(props: Props) {
                 <h1 className="font-bold">{note.name}</h1>
               </div>
               <div>
-                <Button variant={"destructive"}>
-                  <div className="font-bold flex gap-2 items-center">
-                    <Trash className="h-6 w-6" />
-                    Delete Note
-                  </div>
-                </Button>
+                <DeleteNoteBtn noteId={note.id} />
               </div>
             </div>
           </CardHeader>
         </Card>
         <div className="mt-4">
-          <Card className="px-12 py-8">
+          <Card className="px-12 pt-8">
             <TipTapEditor note={note} />
+            <CardFooter>
+              <div className="flex justify-end items-center w-full">
+                Tip: Press{" "}
+                <kbd className="font-sm font-semibold bg-gray-100 text-gray-800 px-1 py-2 mx-2">
+                  Ctrl+Shift+A
+                </kbd>{" "}
+                for AI autocomplete
+              </div>
+            </CardFooter>
           </Card>
         </div>
       </Container>

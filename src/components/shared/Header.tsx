@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "../ui/button";
 import { UserButton } from "@clerk/nextjs";
+import CreateNoteDialog from "./CreateNoteDialog";
 
 export default function Header() {
   return (
@@ -18,7 +19,7 @@ export default function Header() {
           </div>
 
           <div className="mt-4 flex flex-col gap-4 sm:mt-0 sm:flex-row sm:items-center">
-            <Button className="font-bold">Add Note</Button>
+            <CreateNoteDialog />
             <UserButton afterSignOutUrl="/" />
           </div>
         </div>

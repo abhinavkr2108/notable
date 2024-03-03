@@ -26,6 +26,15 @@ export default function CreateNoteDialog() {
     setMounted(true);
   }, []);
 
+  const uploadToFirebase = useMutation({
+    mutationFn: async (noteId: string) => {
+      const response = await axios.post("/api/upload", {
+        noteId: noteId,
+      });
+      return response.data;
+    },
+  });
+
   const createNotebook = useMutation({
     mutationFn: async () => {
       const response = await axios.post("/api/new-note", { name: input });
@@ -41,6 +50,8 @@ export default function CreateNoteDialog() {
     }
     createNotebook.mutate(undefined, {
       onSuccess: ({ noteId }) => {
+        // upload Dalle Image URL to firebase storage
+        uploadToFirebase.mutate(noteId);
         router.push(`/note/${noteId}`);
       },
       onError: (e) => {
